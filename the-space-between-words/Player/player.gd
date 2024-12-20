@@ -8,7 +8,7 @@ const jump_power = -350.0
 var gravity = 900
 
 func _ready():
-	pass
+	Global.Playerbody = self
 
 func _physics_process(delta):
 	if not is_on_floor():
