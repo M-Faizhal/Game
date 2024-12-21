@@ -17,7 +17,7 @@ var is_dealing_damage: bool = false
 
 var dir: Vector2 = Vector2.ZERO
 const gravity = 900
-var knockback_force = -20
+var knockback_force = -30
 var is_roaming: bool = false
 
 var player: CharacterBody2D
@@ -69,7 +69,7 @@ func handle_animation():
 			anim_sprite.flip_h = false
 	elif !dead and taking_damage and !is_dealing_damage:
 		anim_sprite.play("hurt")
-		await get_tree().create_timer(0.6).timeout
+		await get_tree().create_timer(0.4).timeout
 		taking_damage = false 
 	elif dead and is_roaming:
 		is_roaming = false
@@ -109,6 +109,10 @@ func take_damage(damage):
 		dead = true
 	print(str(self), "current health is", health)
 
+func take_damage_cooldown(wait_time):
+	taking_damage = false
+	await get_tree().create_timer(0.5).timeout
+	taking_damage = true
 
 func _on_galang_attack_area_entered(area):
 	if area == Global.PlayerHitbox:

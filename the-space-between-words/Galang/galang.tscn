@@ -170,7 +170,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -240,7 +240,7 @@ radius = 14.0
 height = 109.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmnu5"]
-size = Vector2(41, 17)
+size = Vector2(77, 18.5)
 
 [node name="Galang" type="CharacterBody2D"]
 script = ExtResource("1_y0m32")
@@ -248,8 +248,10 @@ script = ExtResource("1_y0m32")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.70313, 1.69531)
 sprite_frames = SubResource("SpriteFrames_wfjrh")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 58)
@@ -266,7 +268,7 @@ shape = SubResource("CapsuleShape2D_fewtt")
 [node name="GalangAttack" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GalangAttack"]
-position = Vector2(28.5, 27.5)
+position = Vector2(-6.5, 35)
 shape = SubResource("RectangleShape2D_nmnu5")
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

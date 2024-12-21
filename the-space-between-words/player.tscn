@@ -75,23 +75,23 @@ region = Rect2(512, 0, 128, 128)
 atlas = ExtResource("4_wmvuq")
 region = Rect2(640, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m5vun"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nisyx"]
 atlas = ExtResource("5_sl8xl")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xcse4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho5tx"]
 atlas = ExtResource("5_sl8xl")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7n4ro"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_03qlg"]
 atlas = ExtResource("5_sl8xl")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yje3b"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsbwy"]
 atlas = ExtResource("5_sl8xl")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v6seh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgrtw"]
 atlas = ExtResource("5_sl8xl")
 region = Rect2(512, 0, 128, 128)
 
@@ -317,27 +317,27 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack2",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m5vun")
+"texture": SubResource("AtlasTexture_nisyx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xcse4")
+"texture": SubResource("AtlasTexture_ho5tx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7n4ro")
+"texture": SubResource("AtlasTexture_03qlg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yje3b")
+"texture": SubResource("AtlasTexture_gsbwy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v6seh")
+"texture": SubResource("AtlasTexture_lgrtw")
 }],
 "loop": false,
 "name": &"death",
-"speed": 6.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -510,8 +510,9 @@ script = ExtResource("1_odmuh")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.71875, 1.76563)
 sprite_frames = SubResource("SpriteFrames_1melh")
-animation = &"attack1"
-autoplay = "idle"
+animation = &"attack2"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8, 59)

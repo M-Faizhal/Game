@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var deal_damage_zone = $AttackPlayer
 
 const speed = 150.0
-const jump_power = -350.0
+const jump_power = -650.0
 
 var attack_type: String
 var current_attack: bool
@@ -28,6 +28,7 @@ func _ready():
 func _physics_process(delta):
 	siaga = Global.PlayerSiaga
 	Global.PlayerDamageZone = deal_damage_zone
+	Global.PlayerHitbox = $PlayerHitbox
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -77,17 +78,14 @@ func take_damage(damage):
 			print("player health", health)
 			if health <= 0:
 				health = 0
+				dead = true
 				Global.PlayerAlive = false
 				handle_death_animation()
 			take_damage_cooldown(1.0)
 
 func handle_death_animation():
-	$CollisionShape2D.position.y = 5
 	animated_sprite.play("death")
 	await get_tree().create_timer(0.5).timeout
-	$Camera2D.zoom.x = 4
-	$Camera2D.zoom.y = 4
-	await get_tree().create_timer(3.5).timeout
 	self.queue_free()
 
 func take_damage_cooldown(wait_time):
@@ -96,6 +94,8 @@ func take_damage_cooldown(wait_time):
 	can_take_damage = true
 
 func handle_movement_animation(dir):
+	if dead:
+		return
 	if !siaga:
 		if is_on_floor():
 			if !velocity:
@@ -144,7 +144,8 @@ func toggle_damage_collisions(attack_type):
 		await get_tree().create_timer(0.4).timeout
 		damage_zone_collision.disabled = true
 	elif attack_type == "attack2":
-		wait_time = 0.7
+		wait_time = 0.4
+		await get_tree().create_timer(0.4).timeout 
 		damage_zone_collision.disabled = false
 		await get_tree().create_timer(wait_time).timeout
 		damage_zone_collision.disabled = true
@@ -156,9 +157,9 @@ func _on_animated_sprite_2d_animation_finished():
 func set_damage(attack_type):
 	var current_damage_to_deal: int
 	if attack_type == "attack1":
-		current_damage_to_deal = 5
-	elif attack_type == "attack2":
 		current_damage_to_deal = 10
+	elif attack_type == "attack2":
+		current_damage_to_deal = 20
 	elif attack_type == "air":
 		current_damage_to_deal = 7
 	Global.PlayerDamageAmount = current_damage_to_deal
