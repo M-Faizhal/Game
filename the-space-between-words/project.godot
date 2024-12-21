@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="The Space Between Words"
+run/main_scene="res://Scene/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://global.gd"
+GameManager="*res://script/game_manager.gd"
 
 [input]
 
