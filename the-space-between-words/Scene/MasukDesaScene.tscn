@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://ipnt0xv0im7a"]
+[gd_scene load_steps=10 format=4 uid="uid://ipnt0xv0im7a"]
 
 [ext_resource type="Texture2D" uid="uid://b4xyds6dftmum" path="res://Assets/Tileset/Tiles.png" id="1_4bynk"]
 [ext_resource type="Script" path="res://script/masuk_desa_scene.gd" id="1_7i5xx"]
 [ext_resource type="Texture2D" uid="uid://dfssq1b6ur3mq" path="res://Assets/Backgrounds/Desa.png" id="1_ucu8l"]
 [ext_resource type="Texture2D" uid="uid://b2evjtj1ise1v" path="res://Assets/Tileset/Buildings.png" id="3_a7mm2"]
 [ext_resource type="PackedScene" uid="uid://bwgn0l48ilcks" path="res://player.tscn" id="4_i56hg"]
+[ext_resource type="PackedScene" uid="uid://co2v5eb6m52jt" path="res://Galang/galang.tscn" id="6_3blr3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nqscy"]
 texture = ExtResource("1_4bynk")
@@ -882,4 +883,7 @@ tile_map_data = PackedByteArray("AAD+/ycAAAAAAAAAAAD+/ygAAAAAAAEAAAD+/ykAAAAAAAI
 tile_set = SubResource("TileSet_0oicv")
 
 [node name="player" parent="." instance=ExtResource("4_i56hg")]
-position = Vector2(584, 494)
+position = Vector2(462, 512)
+
+[node name="Galang" parent="." instance=ExtResource("6_3blr3")]
+position = Vector2(644, 526)
